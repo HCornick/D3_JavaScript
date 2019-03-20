@@ -28,7 +28,8 @@ var chartGroup = svg.append("g")
 // Load data from data.csv
 d3.csv("assets/data/data.csv").then(function(newsData) {
 
-  // Throw an error if one occurs
+  // Throw an error if one occurs -- does not work for this data set. 
+  // When I tried to include an error warning, I received an Uncaught (in promise) error in the console.
   // if (error) throw error;
 
   // Print the newsData
@@ -47,7 +48,7 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
 
   // Configure a linear scale with a range between the chartHeight and 0
   var yScale = d3.scaleLinear()
-    .domain(d3.extent(newsData, d => d.healthcare))
+    .domain([d3.min(newsData, d => d.healthcare)-1, d3.max(newsData, d => d.healthcare)+1])
     .range([chartHeight, 0]);
 
   // Create two new functions passing the scales in as arguments
