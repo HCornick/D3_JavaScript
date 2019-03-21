@@ -78,7 +78,7 @@ d3.csv("assets/data/data.csv").then(function(newsData) {
     .attr("opacity", ".7")
 
   // Append labels for each State point
-  var stateLabels = chartGroup.selectAll("text")
+  var stateLabels = chartGroup.selectAll()
     .data(newsData)
     .enter()
     .append("text")
